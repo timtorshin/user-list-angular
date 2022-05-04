@@ -3,6 +3,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { NgxDadataModule } from '@kolkov/ngx-dadata';
 
 import { AppComponent } from './app.component';
 import { DialogComponent } from './dialog/dialog.component';
@@ -40,7 +41,8 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
     MatIconModule,
     MatMenuModule,
     MatProgressSpinnerModule,
-    ScrollingModule
+    ScrollingModule,
+    NgxDadataModule
   ],
   providers: [],
   bootstrap: [AppComponent]
