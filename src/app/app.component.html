@@ -1,3 +1,32 @@
-<div class="app__container">
-  <h1>{{ title }}</h1>
-</div>
+<mat-toolbar color="primary">
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <mat-icon>supervised_user_circle</mat-icon>
+  </button>
+  <span>Cписок пользователей</span>
+  <span class="example-spacer"></span>
+  <button mat-raised-button color="warn" (click)="openDialog()">Добавить</button>
+</mat-toolbar>
+<cdk-virtual-scroll-viewport #scroller class="content" [itemSize]="40">
+  <mat-list>
+    <ng-container *cdkVirtualFor="let user of userData">
+      <mat-list-item class="user-item">
+        <div class="info-container">
+          <p class="user-initials">{{ user.userInitials }}</p>
+        <p class="user-address">{{ user.userAddress }}</p>
+        </div>
+        <div class="button-container">
+          <button mat-icon-button color="primary" (click)="editUser(user)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="deleteUser(user.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+        <mat-divider></mat-divider>
+      </mat-list-item>
+    </ng-container>
+    <div class="spinner-item" *ngIf="loading">
+      <mat-progress-spinner [mode]="'indeterminate'" [diameter]="50"></mat-progress-spinner>
+    </div>
+  </mat-list>
+</cdk-virtual-scroll-viewport>
